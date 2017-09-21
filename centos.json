@@ -20,7 +20,7 @@
 			"ssh_username": "ansible",
 			"ssh_password": "ansible",
 			"ssh_port": 22,
-			"ssh_wait_timeout": "1000s",
+			"ssh_wait_timeout": "5000s",
 			"shutdown_command": "echo 'ansible'|sudo -S /sbin/halt -h -p",
 			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"virtualbox_version_file": ".vbox_version",
@@ -42,9 +42,18 @@
 		}
 	],
 	"post-processors": [
-		{
-			"output": "builds/{{.Provider}}-centos7.box",
-			"type": "vagrant"
-		}
+		[
+			{
+				"output": "builds/{{.Provider}}-centos7.box",
+				"type": "vagrant"
+			},
+			{
+				"type": "vagrant-cloud",
+				"box_tag": "kiltum/centos7",
+				"access_token": "{{user `cloud_token`}}",
+				"version": "{{user `version`}}",
+				"version_description": "Minimal CentOS 7 box for Ansible. https://github.com/kiltum/packer-centos7"
+				}
+		]
 	]
 }
