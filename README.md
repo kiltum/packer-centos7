@@ -27,7 +27,4 @@ After deploy by included Vagrant file, you will get
 - ip 192.168.3.5
 - selinux disabled
 
-Status
-------
 
-Upload to vagrant cloud not work

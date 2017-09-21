@@ -1,3 +1,6 @@
 #!/bin/bash
-TOKEN=`cat vagrant.key`
-packer build -var 'cloud_token=${TOKEN}' -var 'version=0.0.1' centos.json
+# 0.0.2 - 489453137
+# 0.0.2 - 522624380
+# 0.0.1 - 694536850
+#
+packer build centos.json
